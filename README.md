@@ -1,4 +1,4 @@
-# RAG - Langchain
+# RAG - Langchain and PineCone Vector DB
 
 A Retrieval Augmented Generation (RAG) system built with LangChain, Ollama, and Pinecone. This project provides both a web search agent and a RAG system for querying documents stored in Pinecone.
 
