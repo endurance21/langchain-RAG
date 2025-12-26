@@ -5,8 +5,16 @@ description = "A LangChain agent development project"
 requires-python = ">=3.11"
 dependencies = [
     "langchain>=0.1.0",
+    "langchain-community>=0.4.1",
     "langchain-ollama>=1.0.1",
+    "langchain-openai>=1.0.0",
     "langchain-tavily>=0.2.15",
+    "langchain-text-splitters>=1.1.0",
+    "pinecone>=8.0.0",
+    "pypdf>=6.5.0",
     "python-dotenv>=1.2.1",
+    "sentence-transformers>=5.2.0",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
 ]
 

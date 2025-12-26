@@ -60,23 +60,16 @@ def get_agent_response(agent, user_query: str) -> AgentResponse:
     Returns:
         AgentResponse: Validated Pydantic response with answer and sources
     """
+    content = ""
     result = agent.invoke({"messages": [{"role": "user", "content": user_query}]})
     if isinstance(result, dict) and "messages" in result:
         last_message = result["messages"][-1]
         if hasattr(last_message, "content"):
             content = last_message.content
-            try:
-                # Try to parse as JSON
-                if isinstance(content, str):
-                    return AgentResponse.model_validate_json(content)
-                elif isinstance(content, dict):
-                    return AgentResponse.model_validate(content)
-            except Exception:
-                pass
 
     structed_llm = create_ollama_model().with_structured_output(AgentResponse)
 
-    result = structed_llm.invoke({"input": content})
+    result = structed_llm.invoke(f"Answer the user's question: {content}")
 
     print(result)
 
